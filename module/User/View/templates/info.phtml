@@ -1,0 +1,30 @@
+<?php
+$title = 'User Info';
+$this->title($title);
+$this->css('#user-info .row { margin-bottom: 10px; }');
+?>
+<h1><?= $title ?></h1>
+
+<div id="user-info">
+	<div class="row">
+	    <div class="col-xs-3"><b>First name</b></div>
+	    <div class="col-xs-5"><?= $this->escape($model->user->firstName) ?></div>
+	</div>
+	<div class="row">
+	    <div class="col-xs-3"><b>Last name</b></div>
+	    <div class="col-xs-5"><?= $this->escape($model->user->lastName) ?></div>
+	</div>
+	<div class="row">
+	    <div class="col-xs-3"><b>Address</b></div>
+	    <div class="col-xs-5">
+	    	<?= $this->escape($model->user->address->street) ?><br>
+	    	<?= $this->escape($model->user->address->postalCode) ?><br>
+	    	<?= $this->escape($model->user->address->city) ?><br>
+	    	<?= $this->escape($model->user->address->country) ?>
+	    </div>
+	</div>
+</div>
+
+<a id="edit-user" class="btn btn-primary" href="<?= $this->url('edit', 'user/'.$model->user->id) ?>">Edit</a>
+
+<a id="delete-user" class="btn btn-primary" href="<?= $this->url('delete', 'user/'.$model->user->id) ?>">Delete</a>

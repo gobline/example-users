@@ -1,0 +1,14 @@
+{
+    "name": "mendoframework/example-users",
+    "description": "Mendo Framework Example Application",
+    "require": {
+        "mendoframework/mvc": "~0.1",
+        "doctrine/orm": "2.5.*@dev"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "User\\": "module/User/"
+        }
+    }
+}

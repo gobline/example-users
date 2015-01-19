@@ -1,0 +1,27 @@
+Allow from all
+
+# Blacklist
+#Deny from 00.000.000.000
+#Deny from 00.000.000.000
+
+Options +FollowSymLinks
+IndexIgnore */*
+
+RewriteEngine On
+
+# Maintenance mode
+# Replace the zeros in 00\.000\.000\.000 with the digits from your own IP address
+#RewriteCond %{REMOTE_ADDR} !^00\.000\.000\.000
+#RewriteCond %{REQUEST_URI} !^/example.com/berightback\.php$
+#RewriteRule ^(.*)$ http://www.example.com/berightback.php [R=307,L]
+
+RewriteCond %{HTTP_HOST} ^example\.com [NC]
+RewriteRule ^(.*)$ http://www.example.com/$1 [L,R=301]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+#RewriteRule ^(.*)/$ $1 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php

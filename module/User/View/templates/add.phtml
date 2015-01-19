@@ -1,0 +1,34 @@
+<?php
+$title = 'Add User';
+$this->title($title);
+$form = $this->form;
+$form ->setElementAttributes('class="form-control"')
+      ->setLabelAttributes('class="control-label"')
+      ->setErrorAttributes('class="help-block"')
+      ->setRowWrapper('div', 'class="form-group"', 'has-error')
+      ->setLabelPosition('default')
+      ->printAllErrors();
+?>
+<h1><?= $title ?></h1>
+
+<?= $form->open($model->form) ?>
+
+    <?php $form->openFieldset('user') ?>
+
+        <?= $form->row('firstName') ?>
+        <?= $form->row('lastName') ?>
+
+        <?= $form->openFieldset('address') ?>
+
+            <?= $form->row('street') ?>
+            <?= $form->row('postalCode') ?>
+            <?= $form->row('city') ?>
+            <?= $form->row('country') ?>
+
+        <?= $form->closeFieldset() ?>
+
+    <?php $form->closeFieldset() ?>
+
+    <?= $form->element('submit', 'value="Add" class="btn btn-default"') ?>
+
+<?= $form->close() ?>

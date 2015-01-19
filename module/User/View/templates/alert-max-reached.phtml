@@ -1,0 +1,12 @@
+<?php
+$title = 'Alert';
+$this->title($title);
+?>
+<h1><?= $title ?></h1>
+
+<div class="alert alert-warning" role="alert">
+	The maximum number of users has been reached.<br>
+	Delete some users in order to add new users.
+</div>
+
+<a id="delete-users" class="btn btn-primary" href="<?= $this->url('reset') ?>">Delete all</a>
