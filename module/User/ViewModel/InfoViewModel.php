@@ -7,8 +7,8 @@ use Doctrine\ORM\EntityRepository;
 
 class InfoViewModel extends AbstractViewModel
 {
-	private $orm;
-	private $id;
+    private $orm;
+    private $id;
 
     public function __construct(EntityRepository $orm)
     {
@@ -17,7 +17,7 @@ class InfoViewModel extends AbstractViewModel
 
     public function setUserId($id)
     {
-    	$this->id = $id;
+        $this->id = $id;
     }
 
     public function user()

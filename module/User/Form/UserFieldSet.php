@@ -10,18 +10,18 @@ class UserFieldSet extends FieldSet
 {
     public function __construct()
     {
-    	parent::__construct('user');
+        parent::__construct('user');
 
         $user = $this->setEntity('User\Model\User');
 
         $this->add((new Element\Text('firstName'))
-    		->setLabel('First name')
-    		->setAttribute('placeholder', 'Enter first name')
+            ->setLabel('First name')
+            ->setAttribute('placeholder', 'Enter first name')
             ->setFilters('required|trim'));
 
         $this->add((new Element\Text('lastName'))
-    		->setLabel('Last name')
-    		->setAttribute('placeholder', 'Enter last name')
+            ->setLabel('Last name')
+            ->setAttribute('placeholder', 'Enter last name')
             ->setFilters('required|trim'));
 
         $address = new AddressFieldSet();

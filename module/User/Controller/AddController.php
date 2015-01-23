@@ -15,10 +15,10 @@ class AddController extends AbstractController
     private $maxNbUsers;
 
     public function __construct(
-        UserForm $form, 
-        EntityManager $orm, 
-        EntityRepository $userRepository, 
-        $maxNbUsers = 3
+        UserForm $form,
+        EntityManager $orm,
+        EntityRepository $userRepository,
+        $maxNbUsers = 10
     ) {
         $this->form = $form;
         $this->orm = $orm;
@@ -34,7 +34,7 @@ class AddController extends AbstractController
         }
 
         if (
-            $this->request->isPost() && 
+            $this->request->isPost() &&
             $this->form->validate($this->request->getPost())
         ) {
             $user = $this->form->get('user');

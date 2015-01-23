@@ -2,7 +2,8 @@
 
 namespace User\Model;
 
-trait PresenterTrait {
+trait PresenterTrait
+{
     public function __get($property)
     {
         $getter = 'get'.ucfirst($property);

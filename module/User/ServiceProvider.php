@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace User;
 
@@ -26,9 +26,9 @@ class ServiceProvider extends Module implements ServiceProviderInterface
         parent::__construct($name, $path, $namespace);
     }
 
-    public function register(Container $container) 
+    public function register(Container $container)
     {
-        $container->extend('modules', function($modules, $c) {
+        $container->extend('modules', function ($modules, $c) {
             $modules->add($this);
 
             return $modules;
@@ -71,7 +71,7 @@ class ServiceProvider extends Module implements ServiceProviderInterface
         };
 
         $container['User.ResetController'] = function ($c) {
-        	return new ResetController($c['doctrine.orm.repository.user']);
+            return new ResetController($c['doctrine.orm.repository.user']);
         };
     }
 }

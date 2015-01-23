@@ -15,9 +15,9 @@ class UserRepository extends EntityRepository
 
     public function reset()
     {
-		$connection = $this->getEntityManager()->getConnection();
-		$platform = $connection->getDatabasePlatform();
+        $connection = $this->getEntityManager()->getConnection();
+        $platform = $connection->getDatabasePlatform();
 
-		$connection->executeUpdate($platform->getTruncateTableSQL('users', true));
+        $connection->executeUpdate($platform->getTruncateTableSQL('users', true));
     }
 }

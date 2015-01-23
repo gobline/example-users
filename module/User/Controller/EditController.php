@@ -36,7 +36,7 @@ class EditController extends AbstractController
         $this->form->populate('user', $user);
 
         if (
-            $this->request->isPost() && 
+            $this->request->isPost() &&
             $this->form->validate($this->request->getPost())
         ) {
             $this->orm->flush();
