@@ -5,6 +5,7 @@ namespace User;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 use Mendo\Mvc\Module\Module;
+use Mendo\Mvc\Router\DefaultRouter;
 use User\ViewModel\ListViewModel;
 use User\ViewModel\InfoViewModel;
 use User\ViewModel\AddViewModel;
@@ -28,10 +29,45 @@ class ServiceProvider extends Module implements ServiceProviderInterface
 
     public function register(Container $container)
     {
-        $container->extend('modules', function ($modules, $c) {
+        $container['error.redirector'] = null;
+
+        $container->extend('module.collection', function ($modules, $c) {
             $modules->add($this);
 
             return $modules;
+        });
+
+        $container->extend('router.collection', function ($routers, $c) {
+            $routers->add(
+                new DefaultRouter(
+                    'default',
+                    '(/)',
+                    [
+                        'module' => 'user',
+                        'controller' => 'index',
+                        'action' => 'index',
+                    ]
+                ));
+
+            return $routers;
+        });
+
+        $container->extend('layouts', function ($layouts, $c) {
+            $layouts
+                ->add('user/list', ['user', 'list'])
+                ->add('user/add', ['user', 'add'])
+                ->add('user/edit', ['user', 'action'])
+                ->add('user/info', ['user', 'action'])
+                ->add('user/alert', ['user', 'action']);
+
+            return $layouts;
+        });
+
+        $container->extend('acl.routes', function ($acl, $c) {
+            $acl->addRole('unauthenticated');
+            $acl->allow('unauthenticated', 'user/', '*');
+
+            return $acl;
         });
 
         $container['form.user'] = function ($c) {

@@ -4,7 +4,6 @@ namespace User\Form;
 
 use Mendo\Form\FieldSet;
 use Mendo\Form\Element;
-use User\Model\User;
 
 class UserFieldSet extends FieldSet
 {
