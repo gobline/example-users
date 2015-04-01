@@ -29,27 +29,12 @@ class ServiceProvider extends Module implements ServiceProviderInterface
 
     public function register(Container $container)
     {
-        $container['error.redirector'] = null;
+        $container['router.mvc.defaultRouter.defaultModule'] = 'user';
 
         $container->extend('module.collection', function ($modules, $c) {
             $modules->add($this);
 
             return $modules;
-        });
-
-        $container->extend('router.collection', function ($routers, $c) {
-            $routers->add(
-                new DefaultRouter(
-                    'default',
-                    '(/)',
-                    [
-                        'module' => 'user',
-                        'controller' => 'index',
-                        'action' => 'index',
-                    ]
-                ));
-
-            return $routers;
         });
 
         $container->extend('layouts', function ($layouts, $c) {
