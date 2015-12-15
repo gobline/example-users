@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="col-md-6" id="list">
+        <?= $route('list')->request() ?>
+
+        <?php if (!$route('add')->active()): ?>
+    	   <a id="add-user" class="btn btn-primary" href="<?= $route('add')->uri() ?>">Add user</a>
+        <?php endif ?>
+    </div>
+    <div class="col-md-6" id="action">
+        <?= $this->content() ?>
+    </div>
+</div>

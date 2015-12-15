@@ -1,0 +1,28 @@
+<?php
+$pageTitle = 'User Info';
+$title($pageTitle);
+$css('#user-info .row { margin-bottom: 10px; }');
+?>
+<h1><?= $pageTitle ?></h1>
+
+<div id="user-info">
+	<div class="row">
+	    <div class="col-xs-3"><b>Full name</b></div>
+	    <div class="col-xs-5"><?= $escape($model->user->fullName) ?></div>
+	</div>
+	<div class="row">
+	    <div class="col-xs-3"><b>Address</b></div>
+	    <div class="col-xs-5">
+	    	<?= $escape($model->user->address->street) ?><br>
+	    	<?= $escape($model->user->address->postalCode) ?><br>
+	    	<?= $escape($model->user->address->city) ?><br>
+	    	<?= $escape($model->user->address->country) ?>
+	    </div>
+	</div>
+</div>
+
+<a id="edit-user" class="btn btn-primary" href="<?= 
+	$route('edit')->params('id/'.$model->user->id)->uri() ?>">Edit</a>
+
+<a id="delete-user" class="btn btn-primary" href="<?= 
+	$route('delete')->params('id/'.$model->user->id)->uri() ?>">Delete</a>

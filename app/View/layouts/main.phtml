@@ -1,0 +1,17 @@
+<?php
+$title->suffix(' - Gobline Demo');
+$js('//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js');
+$css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css');
+$css('body { padding-top:70px; }');
+?>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="<?= $route('home')->uri() ?>">Gobline Example Application</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <?= $this->content() ?>
+</div>

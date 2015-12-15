@@ -1,0 +1,34 @@
+<?php
+if ($model->success) {
+    $route('info')->params('id/'.$model->id)->redirect();
+}
+$pageTitle = 'Edit User';
+$title($pageTitle);
+$form ->setElementAttributes('class="form-control"')
+      ->setLabelAttributes('class="control-label"')
+      ->setErrorAttributes('class="help-block"')
+      ->setRowWrapper('div', 'class="form-group"', 'has-error');
+?>
+<h1><?= $pageTitle ?></h1>
+
+<?= $form->open($model->form) ?>
+
+    <?php $form->openFieldset('user') ?>
+
+        <?= $form->row('firstName') ?>
+        <?= $form->row('lastName') ?>
+
+        <?= $form->openFieldset('address') ?>
+
+            <?= $form->row('street') ?>
+            <?= $form->row('postalCode') ?>
+            <?= $form->row('city') ?>
+            <?= $form->row('country') ?>
+
+        <?= $form->closeFieldset() ?>
+
+    <?php $form->closeFieldset() ?>
+
+    <?= $form->element('submit', 'value="Edit" class="btn btn-default"') ?>
+
+<?= $form->close() ?>

@@ -1,0 +1,32 @@
+<?php
+$pageTitle = 'Users List';
+$title($pageTitle);
+$css('
+    #user-list tr.user { cursor: pointer; }
+    #user-list tr.user:hover { background-color: #66CCEE !important; }');
+$js('
+    $(document).ready(function() {
+        $("tr.user").on("click", function() {
+            window.location = $(this).data("href");
+        });
+    });');
+?>
+<h1><?= $pageTitle ?></h1>
+<div id="user-list">
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>First name</th>
+            <th>Last name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($model->users as $user): ?>
+        <tr class="user" data-href="<?= $route('info')->params('id/'.$user->id)->uri() ?>">
+            <td><?= $escape($user->firstName) ?></td>
+            <td><?= $escape($user->lastName) ?></td>
+        </tr>
+        <?php endforeach ?>
+    </tbody>
+    </table>
+</div>
