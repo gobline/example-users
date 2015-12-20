@@ -11,24 +11,4 @@ $form ->setElementAttributes('class="form-control"')
 ?>
 <h1><?= $pageTitle ?></h1>
 
-<?= $form->open($model->form) ?>
-
-    <?php $form->openFieldset('user') ?>
-
-        <?= $form->row('firstName') ?>
-        <?= $form->row('lastName') ?>
-
-        <?= $form->openFieldset('address') ?>
-
-            <?= $form->row('street') ?>
-            <?= $form->row('postalCode') ?>
-            <?= $form->row('city') ?>
-            <?= $form->row('country') ?>
-
-        <?= $form->closeFieldset() ?>
-
-    <?php $form->closeFieldset() ?>
-
-    <?= $form->element('submit', 'value="Edit" class="btn btn-default"') ?>
-
-<?= $form->close() ?>
+<?= $render(__DIR__.'/partial/form.phtml', ['model' => $model, 'buttonText' => 'Edit' ]) ?>

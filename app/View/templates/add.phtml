@@ -11,43 +11,9 @@ $title($pageTitle);
 
 <?php
 if ($model->maxNbUsersReached) {
-?>
-    <div class="alert alert-warning" role="alert">
-        The maximum number of users has been reached.<br>
-        Delete some users in order to add new users.
-    </div>
-
-    <a id="delete-users" class="btn btn-primary" href="<?= $route('reset')->uri() ?>">Delete all</a>
-<?php
+    echo $render(__DIR__.'/partial/max-users-reached.phtml');
     return;
 }
 ?>
 
-<?php
-$form ->setElementAttributes('class="form-control"')
-      ->setLabelAttributes('class="control-label"')
-      ->setErrorAttributes('class="help-block"')
-      ->setRowWrapper('div', 'class="form-group"', 'has-error');
-?>
-
-<?= $form->open($model->form) ?>
-
-    <?php $form->openFieldset('user') ?>
-
-        <?= $form->row('firstName') ?>
-        <?= $form->row('lastName') ?>
-
-        <?= $form->openFieldset('address') ?>
-
-            <?= $form->row('street') ?>
-            <?= $form->row('postalCode') ?>
-            <?= $form->row('city') ?>
-            <?= $form->row('country') ?>
-
-        <?= $form->closeFieldset() ?>
-
-    <?php $form->closeFieldset() ?>
-
-    <?= $form->element('submit', 'value="Add" class="btn btn-default"') ?>
-
-<?= $form->close() ?>
+<?= $render(__DIR__.'/partial/form.phtml', ['model' => $model, 'buttonText' => 'Add' ]) ?>

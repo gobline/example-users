@@ -4,7 +4,6 @@ namespace App\ActionModel;
 
 use App\Form\UserForm;
 use App\Model\UserRepository;
-use Gobline\Filter\FilterFunnel;
 use Doctrine\ORM\EntityManager;
 
 class EditActionModel
@@ -14,17 +13,14 @@ class EditActionModel
     public $success = false;
     private $orm;
     private $repository;
-    private $filter;
 
     public function __construct(
         UserForm $form, 
         EntityManager $orm, 
-        UserRepository $repository,
-        FilterFunnel $filter
+        UserRepository $repository
     ) {
         $this->orm = $orm;
         $this->form = $form;
-        $this->filter = $filter;
         $this->repository = $repository;
     }
 
@@ -49,11 +45,6 @@ class EditActionModel
 
     public function __invoke($request, $id)
     {
-        $id = $this->filter->filter($id, 'required|trim|int');
-        if (!$id) {
-            throw new \RuntimeException();
-        }
-
         $this->populateForm($id);
 
         if (

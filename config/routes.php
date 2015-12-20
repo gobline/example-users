@@ -30,6 +30,9 @@ return [
                                 getcwd().'/app/View/layouts/main.phtml',
                                 getcwd().'/app/View/layouts/action.phtml',
                             ],
+                            '_filter' => [
+                                'id' => 'required|trim|int',
+                            ],
                         ],
                     ],
                     [
@@ -44,6 +47,9 @@ return [
                             '_layouts' => [
                                 getcwd().'/app/View/layouts/main.phtml',
                                 getcwd().'/app/View/layouts/action.phtml',
+                            ],
+                            '_filter' => [
+                                'id' => 'required|trim|int',
                             ],
                         ],
                     ],
@@ -74,6 +80,9 @@ return [
                             '_layouts' => [
                                 getcwd().'/app/View/layouts/main.phtml',
                                 getcwd().'/app/View/layouts/action.phtml',
+                            ],
+                            '_filter' => [
+                                'id' => 'required|trim|int',
                             ],
                         ],
                     ],

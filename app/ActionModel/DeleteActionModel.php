@@ -3,20 +3,15 @@
 namespace App\ActionModel;
 
 use App\Model\User;
-use Gobline\Filter\FilterFunnel;
 use Doctrine\ORM\EntityManager;
 
 class DeleteActionModel
 {
     private $orm;
-    private $filter;
 
-    public function __construct(
-        EntityManager $orm,
-        FilterFunnel $filter
-    ) {
+    public function __construct(EntityManager $orm)
+    {
         $this->orm = $orm;
-        $this->filter = $filter;
     }
 
     private function delete($id)
@@ -29,11 +24,6 @@ class DeleteActionModel
 
     public function __invoke($request, $id)
     {
-        $id = $this->filter->filter($id, 'required|trim|int');
-        if (!$id) {
-            throw new \RuntimeException();
-        }
-
         $this->delete($id);
     }
 }
